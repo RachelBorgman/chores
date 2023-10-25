@@ -51,7 +51,7 @@ const UpdateChore = (props) => {
                     //     for (const key of Object.keys(errorResponse)) {
                     //     errorArr.push(errorResponse[key].message)
                     // }
-            setErrors(err.response.data.err.errors);
+                setErrors(err.response.data.err.errors);
             })
     }
 
@@ -112,7 +112,7 @@ const UpdateChore = (props) => {
                         <br></br>
                         <Link to='/dashboard' style={editStyle} >Cancel</Link>
                         <Button style={buttonStyle} input type="submit" value="Submit">Update</Button>
-                        <DeleteButton choreName={choreN} choreID={id} successCallback={()=> removeFromDom(id)}/>
+                        <Button><DeleteButton choreName={choreN} choreID={id} successCallback={()=> removeFromDom(id)}/></Button>
                     </form>
                 </>
             )}
