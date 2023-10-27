@@ -1,3 +1,6 @@
+*{
+  font-family: 'Nunito', sans-serif;
+}
 
 #root {
   max-width: 1280px;
@@ -5,19 +8,6 @@
   padding: 2rem;
   text-align: center;
 }
-
-/* .logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-} */
 
 @keyframes logo-spin {
   from {
@@ -41,9 +31,24 @@
 .read-the-docs {
   color: #888;
 }
+
+/* ChoreList */
+
+.table{
+  margin-top: 10px;
+}
 .dashTitle{
   color: hsl(9, 100%, 64%)
 }
+th{
+  font-size: 1.1em;
+}
+.responsibility{
+  text-transform: capitalize;
+}
+
+/* AddChoreForm */
+
 .formBox{
   border: 1px solid goldenrod;
   width: 700px;
@@ -53,9 +58,15 @@
 .title{
   color: tomato
 }
+
+/* Main */
+
 .footerCredit{
   margin-top: 40px;
 }
+
+/* ViewChore */
+
 .viewLabel{
   display: flex;
   justify-content:space-between;
@@ -77,4 +88,14 @@
 }
 .choreTitle{
   color: teal;
+}
+
+/* FindChores */
+
+.searchbox{
+  margin-top: 10px;
+}
+.searches{
+  display: flex;
+  gap: 80px
 }

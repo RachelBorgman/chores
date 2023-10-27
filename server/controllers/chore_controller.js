@@ -29,6 +29,7 @@ module.exports.findOneSingleChore = (req, res) => {
 }
 
 module.exports.updateExistingChore = (req, res) => {
+    console.log(req.params)
     Chore.findOneAndUpdate(
         { _id: req.params.id },
         req.body,
@@ -53,3 +54,14 @@ module.exports.deleteAnExistingChore = (req, res) => {
             res.status(400).json({ err });
         })
 }
+
+// module.exports.findChores = (req, res) => {
+//     Chore.find({responsibility: req.params.responsibility}) 
+//     .then(result => {
+//         console.log("THIS IS  chores BEFORE RES.JSON: ", result)
+//         res.json(result)
+//     })
+//     .catch((err) => {
+//         res.status(400).json({ err });
+//     })
+// }

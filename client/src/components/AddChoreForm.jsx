@@ -49,10 +49,10 @@ const AddChoreForm = (props) => {
                 <ol className="breadcrumb">
                     <li className="breadcrumb-item"><Link to={`/dashboard`}>Dashboard</Link></li>
                     <li className="breadcrumb-item active" aria-current="page">Add Chore</li>
+                    <li className="breadcrumb-item"><Link to={`/chores/find`}>Search</Link></li>
                 </ol>
             </nav>
             <div className="headerBox">
-                {/* <Link to={`/`} style={linkStyle} >Home</Link> */}
                 <h3 className='title'>Add a New Chore</h3>
             </div>
             <div>

@@ -4,35 +4,21 @@ import { Link } from "react-router-dom";
 import DeleteButton from './DeleteButton';
 import { Button } from '@mui/material'
 // import Test from './Test';
-import FindChores from './FindChores';
 import DoneButton from './DoneButton';
-// import { GlobalFilter } from './GlobalFilter' 
 
 const ChoreFinder = (props) => {
     const {setChoreList, choreList, removeFromDom, editStyle, buttonStyle} = props;
     // const navigate = useNavigate();
-
-    const [searchItem, setSearchItem] = useState('')
-    const [filteredChores, setFilteredChores] = useState(choreList)
-
-    const handleInputChange = (e) => { 
-        const searchTerm = e.target.value;
-        setSearchItem(searchTerm)
-        const filteredChores = choreList.filter((chore) =>
-        chore.choreResponsibility.toLowerCase().includes(searchTerm.toLowerCase())
-        );
-        setFilteredChores(filteredChores);
-    }
     
     useEffect(()=>{
         axios.get("http://localhost:8000/api/chores")
             .then((res)=>{
                 console.log("THIS IS RES.DATA", res.data);
-                // let choresSorted = res.data;
-                // choresSorted = choresSorted.sort((a,b) => a.choreName.localeCompare(b.choreName))
-                // console.log("this is choresSorted:", choresSorted)
-                // setChoreList(choresSorted);
-                setChoreList(res.data)
+                let choresSorted = res.data;
+                choresSorted = choresSorted.sort((a,b) => a.choreName.localeCompare(b.choreName))
+                console.log("this is choresSorted:", choresSorted)
+                setChoreList(choresSorted);
+                // setChoreList(res.data)
                 })
         .catch((err)=>{
             console.log(err.res);
@@ -45,66 +31,53 @@ const ChoreFinder = (props) => {
                 <ol className="breadcrumb">
                     <li className="breadcrumb-item active" aria-current="page">Dashboard</li>
                     <li className="breadcrumb-item"><Link to={`/chores/add`}>Add Chore</Link></li>
-                    <li style={{marginLeft:'50px'}}>
-                        <div>      
-                            <input type="text" value={searchItem} size="30"
-                                onChange={handleInputChange}
-                                placeholder='Search Your Name for Chores'
-                            />
-                            <ul>
-                                {filteredChores.map(chore => <li key={chore.id}>{chore.choreName}</li>)}
-                            </ul>
-                        </div>
-                    </li>
+                    <li className="breadcrumb-item"><Link to={`/chores/find`}>Search</Link></li>
                 </ol>
-                
             </nav>
             <div className="headerBox">
             <h2 className='dashTitle'> Welcome to your Chore Tracker Dashboard!</h2>
             <br></br>
                 <Link to={`/chores/add`}><Button style={buttonStyle}>Add a New Chore</Button></Link>
+                <Link to={`/chores/find`}><Button style={buttonStyle}>Search Chores</Button></Link>
                 <br></br>
-                <div className="table">
-                        <table className='table table-striped'>
-                            <thead>
-                                <tr>
-                                    <th scope='col'>Chore Name</th>
-                                    <th scope='col'>Chore Description</th>
-                                    <th scope='col'>Location</th>
-                                    <th scope='col'>Posted By:</th>
-                                    <th scope='col'>Who is Responsible?</th>
-                                    <th scope='col'>Actions Available</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            {
-                                choreList && choreList.map((chore)=>{
-                                return(
-                                    <tr key={chore._id}>
-                                        <td>{chore.choreName}</td>
-                                        <td>{chore.choreDescription}</td>
-                                        <td>{chore.choreLocation}</td>
-                                        <td className='responsibility'>{chore.chorePostedBy}</td> 
-                                        <td className='responsibility'>{chore.choreResponsibility}</td> 
-                                        <td>
-                                            <Link to={`/chores/${chore._id}`} style={editStyle} >View</Link>
-                                            <Link to={`/chores/edit/${chore._id}`} style={editStyle} >Edit</Link>
-                                            <DoneButton style={buttonStyle} choreName={chore.choreName} choreID={chore._id} successCallback={()=> removeFromDom(chore._id)}/>
-                                            <DeleteButton choreName={chore.choreName} choreID={chore._id} successCallback={()=> removeFromDom(chore._id)}/>
-                                            {/* <button onClick={sortDescending}>Sort</button> */}
-                                        </td>
+                <div id='container'>
+                    <div className="table">
+                            <table className='table table-striped table-hover'>
+                                <thead>
+                                    <tr>
+                                        <th scope='col'>Chore Name</th>
+                                        <th scope='col'>Chore Description</th>
+                                        <th scope='col'>Location</th>
+                                        <th scope='col'>Posted By:</th>
+                                        <th scope='col'>Who is Responsible?</th>
+                                        <th scope='col'>Actions Available</th>
                                     </tr>
-                                )})
-                            }
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                {
+                                    choreList && choreList.map((chore)=>{
+                                    return(
+                                        <tr key={chore._id}>
+                                            <td>{chore.choreName}</td>
+                                            <td>{chore.choreDescription}</td>
+                                            <td>{chore.choreLocation}</td>
+                                            <td className='responsibility'>{chore.chorePostedBy}</td> 
+                                            <td className='responsibility'>{chore.choreResponsibility}</td> 
+                                            <td>
+                                                <Link to={`/chores/${chore._id}`} style={editStyle} >View</Link>
+                                                <Link to={`/chores/edit/${chore._id}`} style={editStyle} >Edit</Link>
+                                                <DoneButton style={buttonStyle} choreName={chore.choreName} choreID={chore._id} successCallback={()=> removeFromDom(chore._id)}/>
+                                                <DeleteButton choreName={chore.choreName} choreID={chore._id} successCallback={()=> removeFromDom(chore._id)}/>
+                                            </td>
+                                        </tr>
+                                    )})
+                                }
+                                </tbody>
+                            </table>
+                    </div>
                 </div>
-            {/* <div>
-                <FindChores/>
-            </div> */}
             </div>
         </div>
-    
     )
 }
 export default ChoreFinder;

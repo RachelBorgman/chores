@@ -1,7 +1,5 @@
 import React, {useEffect} from 'react'
-// import axios from 'axios';
 import { Link } from "react-router-dom";
-// import DeleteButton from './DeleteButton';
 import { Button } from '@mui/material'
 
 const Welcome = (props) => {
@@ -18,6 +16,7 @@ const Welcome = (props) => {
                     <li className="breadcrumb-item active" aria-current="page">Home</li>
                     <li className="breadcrumb-item"><Link to={`/dashboard`}>Dashboard</Link></li>
                     <li className="breadcrumb-item"><Link to={`/chores/add`}>Add Chore</Link></li>
+                    <li className="breadcrumb-item"><Link to={`/chores/find`}>Search</Link></li>
                 </ol>
             </nav>
             <br></br>

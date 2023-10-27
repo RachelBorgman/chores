@@ -6,4 +6,5 @@ module.exports = (app) => {
     app.patch('/api/chores/:id', ChoreController.updateExistingChore);
     app.post('/api/chores', ChoreController.createNewChore);
     app.delete('/api/chores/:id', ChoreController.deleteAnExistingChore);
+    // app.get('/api/chores/:responsibility', ChoreController.findChores)
 }

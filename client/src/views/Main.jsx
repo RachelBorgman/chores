@@ -9,7 +9,8 @@ import AddChoreForm from '../components/AddChoreForm';
 import ViewChore from '../components/ViewChore';
 import UpdateChore from '../components/UpdateChore';
 import Welcome from '../components/Welcome';
-// import Dashboard from './Dashboard';
+import Test from '../components/Test';
+import FindChores from '../components/FindChores';
 
 
 function Main() {
@@ -31,7 +32,8 @@ function Main() {
 
     const buttonStyle = {
         backgroundColor: 'teal',
-        color: 'white'
+        color: 'white',
+        margin: '10px'
     };
 
     useEffect(() => {
@@ -58,10 +60,10 @@ function Main() {
         <BrowserRouter>
             <Routes>
                 <Route element={<Welcome/>}  path="/"/>
-                {/* <Route element={<Dashboard/>} path="/dashboard/*" /> */}
                 <Route element={<ChoreList buttonStyle={buttonStyle} choreList={choreList} editStyle={editStyle} setChoreList={setChoreList}  removeFromDom={removeFromDom}/>} path="/dashboard" default />
                 <Route element={<AddChoreForm   buttonStyle={buttonStyle} initialChoreName="" initialChoreDescription=""  initialChoreLocation=""  initialChorePostedBy="" initialChoreResponsibility="" linkStyle={linkStyle} editStyle={editStyle} choreList={choreList} setChoreList={setChoreList} setErrors={setErrors} errors={errors}/>} path="/chores/add" />
                 <Route element={<ViewChore  buttonStyle={buttonStyle}/>} path="/chores/:id" />
+                <Route element={<FindChores   buttonStyle={buttonStyle}  choreList={choreList} />} path="/chores/find" />
                 <Route element={<UpdateChore   buttonStyle={buttonStyle} choreList={choreList} linkStyle={linkStyle} editStyle={editStyle} setChoreList={setChoreList}  removeFromDom={removeFromDom} initialChoreName="" initialChoreDescription=""  initialChoreLocation="" initialChorePostedBy="" initialChoreResponsibility=""/>} path="/chores/edit/:id" />
             </Routes>
         </BrowserRouter>

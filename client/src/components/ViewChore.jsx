@@ -36,6 +36,7 @@ const ViewChore = (props) => {
                     <li className="breadcrumb-item active" aria-current="page">View Chore</li>
                     <li className="breadcrumb-item"><Link to={`/dashboard`}>Dashboard</Link></li>
                     <li className="breadcrumb-item"><Link to={`/chores/add`}>Add Chore</Link></li>
+                    <li className="breadcrumb-item"><Link to={`/chores/find`}>Search</Link></li>
                 </ol>
             </nav>
             <div className='formBox'>
