@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import {useParams, useNavigate, Link} from "react-router-dom";
 import { Button } from '@mui/material'
-import DoneButton from './DoneButton';
 
 const ViewChore = (props) => {
 
@@ -62,7 +61,6 @@ const ViewChore = (props) => {
                     <p className='choreInfo'>{oneChore.choreResponsibility}</p>
                 </div>
                 <Link to={`/chores/edit/${oneChore._id}`}><Button style={buttonStyle}>Edit Chore Details</Button></Link>
-                {/* <DoneButton choreName={chore.choreName} choreID={chore._id} successCallback={()=> removeFromDom(chore._id)}/> */}
             </div>
         </div>
     );

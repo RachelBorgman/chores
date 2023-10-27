@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { useNavigate, useParams, Link } from "react-router-dom";
 import DeleteButton from './DeleteButton';
+import DoneButton from './DoneButton';
 import { Button } from '@mui/material'
 
 const UpdateChore = (props) => {
@@ -113,7 +114,8 @@ const UpdateChore = (props) => {
                         <br></br>
                         <Link to='/dashboard' style={editStyle} >Cancel</Link>
                         <Button style={buttonStyle} input type="submit" value="Submit">Update</Button>
-                        <Button><DeleteButton choreName={choreN} choreID={id} successCallback={()=> removeFromDom(id)}/></Button>
+                        <DoneButton choreName={choreN} choreID={id} successCallback={()=> removeFromDom(id)}/>
+                        <DeleteButton choreName={choreN} choreID={id} successCallback={()=> removeFromDom(id)}/>
                     </form>
                 </>
             )}
