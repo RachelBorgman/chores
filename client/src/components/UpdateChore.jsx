@@ -17,8 +17,7 @@ const UpdateChore = (props) => {
     const [errors, setErrors] = useState({});
     const [choreNA, setChoreNA] = useState("")
     const navigate = useNavigate();
-    // retrieve the current values for this person so we can fill
-    // in the form with what is in the db currently
+
     useEffect(() => {
         axios.get('http://localhost:8000/api/chores/' + id)
             .then(res => {
@@ -42,7 +41,6 @@ const UpdateChore = (props) => {
             .then(res => {
                 console.log("this is the put response:", res);
                 navigate("/dashboard")
-                // navigate("/chores/" + id); // this will take us back to the Main.js
             })
             .catch((err) => {
                 console.log(err)
@@ -78,7 +76,6 @@ const UpdateChore = (props) => {
                             <Link to="/chores/add">Add Chore</Link>
                             </>
                         : null }
-                        {/* <Link to="/" style={linkStyle} >Home</Link> */}
                         <div style={{color:"red"}}>
                         {
                         Object.keys(errors).map((key) => (

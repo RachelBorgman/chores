@@ -1,13 +1,9 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import { Link } from "react-router-dom";
 import { Button } from '@mui/material'
 
 const Welcome = (props) => {
-
-    const buttonStyle = {
-        backgroundColor: 'teal',
-        color: 'white'
-    };
+    const {buttonStyle} = props;
 
     return(
         <div>

@@ -20,14 +20,6 @@ const ViewChore = (props) => {
             .catch( err => console.log(err) );
     }, []);
 
-    const deleteHandler = () => {
-        axios.delete(`http://localhost:8000/api/chores/${id}`)
-            .then((res) => {
-                navigate("/");
-            })
-            .catch((err) => {console.log(err)})
-    }
-
     return (
         <div>
             <nav aria-label="breadcrumb">

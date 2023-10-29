@@ -99,3 +99,14 @@ th{
   display: flex;
   gap: 80px
 }
+.choreResponsibilitySearch{
+  text-transform: capitalize;
+}
+
+/* FilteredChores */
+
+.mainContainer{
+  margin: 30px;
+  border: 1px solid goldenrod;
+  padding: 50px;
+}

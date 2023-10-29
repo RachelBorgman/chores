@@ -54,7 +54,7 @@ const FindChores = (props) => {
                                 onChange={handleInputChangeChore}
                                 placeholder='Search Chore Name'
                             />
-                                {filteredChoresChore.map(chore => <p key={chore.id}>{chore.choreResponsibility}</p>)}
+                                {filteredChoresChore.map(chore => <p className='choreResponsibilitySearch' key={chore.id}>{chore.choreResponsibility}</p>)}
                 </div>
             </div>
         </div>

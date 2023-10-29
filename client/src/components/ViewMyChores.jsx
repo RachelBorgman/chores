@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { Link } from "react-router-dom";
 import { Button } from '@mui/material'
 
-const Test = (props) => {
+const MyChores = (props) => {
     const {choreList, buttonStyle, name} = props;
 
     const [personsChores, setPersonsChores] = useState(choreList)
@@ -49,4 +49,4 @@ const Test = (props) => {
     );
 }
 
-export default Test
+export default MyChores

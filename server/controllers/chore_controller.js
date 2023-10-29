@@ -54,14 +54,3 @@ module.exports.deleteAnExistingChore = (req, res) => {
             res.status(400).json({ err });
         })
 }
-
-// module.exports.findChores = (req, res) => {
-//     Chore.find({responsibility: req.params.responsibility}) 
-//     .then(result => {
-//         console.log("THIS IS  chores BEFORE RES.JSON: ", result)
-//         res.json(result)
-//     })
-//     .catch((err) => {
-//         res.status(400).json({ err });
-//     })
-// }
