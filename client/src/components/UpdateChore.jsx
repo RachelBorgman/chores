@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { useNavigate, useParams, Link } from "react-router-dom";
 import DeleteButton from './DeleteButton';
+import DoneButton from './DoneButton';
 import { Button } from '@mui/material'
 
 const UpdateChore = (props) => {
@@ -16,8 +17,7 @@ const UpdateChore = (props) => {
     const [errors, setErrors] = useState({});
     const [choreNA, setChoreNA] = useState("")
     const navigate = useNavigate();
-    // retrieve the current values for this person so we can fill
-    // in the form with what is in the db currently
+
     useEffect(() => {
         axios.get('http://localhost:8000/api/chores/' + id)
             .then(res => {
@@ -41,7 +41,6 @@ const UpdateChore = (props) => {
             .then(res => {
                 console.log("this is the put response:", res);
                 navigate("/dashboard")
-                // navigate("/chores/" + id); // this will take us back to the Main.js
             })
             .catch((err) => {
                 console.log(err)
@@ -63,6 +62,7 @@ const UpdateChore = (props) => {
                     <li className="breadcrumb-item active" aria-current="page">Edit Chore</li>
                     <li className="breadcrumb-item"><Link to={`/dashboard`}>Dashboard</Link></li>
                     <li className="breadcrumb-item"><Link to={`/chores/add`}>Add Chore</Link></li>
+                    <li className="breadcrumb-item"><Link to={`/chores/find`}>Search</Link></li>
                 </ol>
             </nav>
             <h3 style={{color:'tomato'}}>Edit Chore: {choreN}</h3>
@@ -76,7 +76,6 @@ const UpdateChore = (props) => {
                             <Link to="/chores/add">Add Chore</Link>
                             </>
                         : null }
-                        {/* <Link to="/" style={linkStyle} >Home</Link> */}
                         <div style={{color:"red"}}>
                         {
                         Object.keys(errors).map((key) => (
@@ -112,7 +111,8 @@ const UpdateChore = (props) => {
                         <br></br>
                         <Link to='/dashboard' style={editStyle} >Cancel</Link>
                         <Button style={buttonStyle} input type="submit" value="Submit">Update</Button>
-                        <Button><DeleteButton choreName={choreN} choreID={id} successCallback={()=> removeFromDom(id)}/></Button>
+                        <DoneButton choreName={choreN} choreID={id} successCallback={()=> removeFromDom(id)}/>
+                        <DeleteButton choreName={choreN} choreID={id} successCallback={()=> removeFromDom(id)}/>
                     </form>
                 </>
             )}

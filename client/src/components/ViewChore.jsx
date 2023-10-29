@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import {useParams, useNavigate, Link} from "react-router-dom";
 import { Button } from '@mui/material'
-import DoneButton from './DoneButton';
 
 const ViewChore = (props) => {
 
@@ -21,14 +20,6 @@ const ViewChore = (props) => {
             .catch( err => console.log(err) );
     }, []);
 
-    const deleteHandler = () => {
-        axios.delete(`http://localhost:8000/api/chores/${id}`)
-            .then((res) => {
-                navigate("/");
-            })
-            .catch((err) => {console.log(err)})
-    }
-
     return (
         <div>
             <nav aria-label="breadcrumb">
@@ -36,6 +27,7 @@ const ViewChore = (props) => {
                     <li className="breadcrumb-item active" aria-current="page">View Chore</li>
                     <li className="breadcrumb-item"><Link to={`/dashboard`}>Dashboard</Link></li>
                     <li className="breadcrumb-item"><Link to={`/chores/add`}>Add Chore</Link></li>
+                    <li className="breadcrumb-item"><Link to={`/chores/find`}>Search</Link></li>
                 </ol>
             </nav>
             <div className='formBox'>
@@ -61,7 +53,6 @@ const ViewChore = (props) => {
                     <p className='choreInfo'>{oneChore.choreResponsibility}</p>
                 </div>
                 <Link to={`/chores/edit/${oneChore._id}`}><Button style={buttonStyle}>Edit Chore Details</Button></Link>
-                {/* <DoneButton choreName={chore.choreName} choreID={chore._id} successCallback={()=> removeFromDom(chore._id)}/> */}
             </div>
         </div>
     );

@@ -29,6 +29,7 @@ module.exports.findOneSingleChore = (req, res) => {
 }
 
 module.exports.updateExistingChore = (req, res) => {
+    console.log(req.params)
     Chore.findOneAndUpdate(
         { _id: req.params.id },
         req.body,

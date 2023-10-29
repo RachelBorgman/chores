@@ -1,15 +1,9 @@
-import React, {useEffect} from 'react'
-// import axios from 'axios';
+import React from 'react'
 import { Link } from "react-router-dom";
-// import DeleteButton from './DeleteButton';
 import { Button } from '@mui/material'
 
 const Welcome = (props) => {
-
-    const buttonStyle = {
-        backgroundColor: 'teal',
-        color: 'white'
-    };
+    const {buttonStyle} = props;
 
     return(
         <div>
@@ -18,6 +12,7 @@ const Welcome = (props) => {
                     <li className="breadcrumb-item active" aria-current="page">Home</li>
                     <li className="breadcrumb-item"><Link to={`/dashboard`}>Dashboard</Link></li>
                     <li className="breadcrumb-item"><Link to={`/chores/add`}>Add Chore</Link></li>
+                    <li className="breadcrumb-item"><Link to={`/chores/find`}>Search</Link></li>
                 </ol>
             </nav>
             <br></br>
